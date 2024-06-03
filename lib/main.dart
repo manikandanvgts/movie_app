@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:ui_challenges/firebase_options.dart';
 import 'package:ui_challenges/widgets/rating_widget.dart';
 
 import 'models/movies_models.dart';
@@ -6,7 +8,11 @@ import 'widgets/button_widget.dart';
 import 'widgets/bg_image_widget.dart';
 import 'screens/movie_detail_screen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
